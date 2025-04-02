@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--dark);
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        #city-input {
+            padding: 12px 20px;
+            width: 70%;
+            border: 2px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #city-input:focus {
+            border-color: var(--primary);
+        }
+        
+        #search-btn {
+            padding: 12px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        #search-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        .current-weather {
+            margin: 30px 0;
+        }
+        
+        .weather-icon {
+            font-size: 4rem;
+            margin: 10px 0;
+            color: var(--success);
+        }
+        
+        .temp {
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 10px 0;
+            color: var(--primary);
+        }
+        
+        .weather-info {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stat-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .forecast {
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .forecast-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .forecast-days {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .forecast-day {
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .day-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .forecast-icon {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: var(--warning);
+        }
+        
+        .forecast-temp {
+            font-weight: 600;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="city-name">Paris</h1>
+        
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Search for a city...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="current-weather">
+            <div class="weather-icon">
+                <i class="fas fa-cloud-rain"></i>
+            </div>
+            
+            <div class="temp">18°C</div>
+            
+            <div class="weather-info">
+                Saturday 15:32, Moderate Rain
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-tint stat-icon"></i>
+                    <span>Humidity: <strong>87%</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-wind stat-icon"></i>
+                    <span>Wind: <strong>7.2 km/h</strong></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="forecast">
+            <div class="forecast-title">4-Day Forecast</div>
+            <div class="forecast-days">
+                <div class="forecast-day">
+                    <div class="day-name">Sunday</div>
+                    <div class="forecast-icon"><i class="fas fa-cloud-sun"></i></div>
+                    <div class="weather-info">Partly Cloudy</div>
+                    <div class="forecast-temp">20°C / 14°C</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Monday</div>
+                    <div class="forecast-icon"><i class="fas fa-sun"></i></div>
+                    <div class="weather-info">Sunny</div>
+                    <div class="forecast-temp">22°C / 15°C</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Tuesday</div>
+                    <div class="forecast-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+                    <div class="weather-info">Heavy Rain</div>
+                    <div class="forecast-temp">17°C / 12°C</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Wednesday</div>
+                    <div class="forecast-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="weather-info">Cloudy</div>
+                    <div class="forecast-temp">19°C / 13°C</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            This project was coded by Nothemba Maluleke and is <a href="https://github.com/yourusername" target="_blank">on GitHub</a> and hosted on Netlify.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const city = document.getElementById('city-input').value.trim();
+            if (city) {
+                document.getElementById('city-name').textContent = city;
+                // Here you would typically call a weather API to get real data
+                // For now, we'll just update the city name
+                
+                // Example of how you would update forecast for new city
+                updateForecast(city);
+            }
+        });
+        
+        // Allow search on Enter key press
+        document.getElementById('city-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('search-btn').click();
+            }
+        });
+        
+        // Function to update forecast (mock data)
+        function updateForecast(city) {
+            // In a real app, you would fetch this data from a weather API
+            const forecasts = [
+                { day: 'Sunday', icon: 'fa-cloud-sun', condition: 'Partly Cloudy', temp: '20°C / 14°C' },
+                { day: 'Monday', icon: 'fa-sun', condition: 'Sunny', temp: '22°C / 15°C' },
+                { day: 'Tuesday', icon: 'fa-cloud-showers-heavy', condition: 'Heavy Rain', temp: '17°C / 12°C' },
+                { day: 'Wednesday', icon: 'fa-cloud', condition: 'Cloudy', temp: '19°C / 13°C' }
+            ];
+            
+            const forecastDays = document.querySelectorAll('.forecast-day');
+            forecastDays.forEach((day, index) => {
+                day.querySelector('.day-name').textContent = forecasts[index].day;
+                day.querySelector('.forecast-icon i').className = 'fas ' + forecasts[index].icon;
+                day.querySelector('.weather-info').textContent = forecasts[index].condition;
+                day.querySelector('.forecast-temp').textContent = forecasts[index].temp;
+            });
+            
+            // Also update current weather (mock)
+            document.querySelector('.weather-icon i').className = 'fas fa-cloud-sun';
+            document.querySelector('.temp').textContent = '20°C';
+            document.querySelector('.weather-info').textContent = 'Partly Cloudy';
+            document.querySelectorAll('.stat-item strong')[0].textContent = '75%';
+            document.querySelectorAll('.stat-item strong')[1].textContent = '5.5 km/h';
+        }
+    </script>
+</body>
+</html>
