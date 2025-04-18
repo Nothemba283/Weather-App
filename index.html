@@ -252,11 +252,6 @@
             const city = document.getElementById('city-input').value.trim();
             if (city) {
                 document.getElementById('city-name').textContent = city;
-                // Here you would typically call a weather API to get real data
-                // For now, we'll just update the city name
-                
-                // Example of how you would update forecast for new city
-                updateForecast(city);
             }
         });
         
@@ -268,9 +263,6 @@
         });
         
         // Function to update forecast (mock data)
-        function updateForecast(city) {
-            // In a real app, you would fetch this data from a weather API
-            const forecasts = [
                 { day: 'Sunday', icon: 'fa-cloud-sun', condition: 'Partly Cloudy', temp: '20°C / 14°C' },
                 { day: 'Monday', icon: 'fa-sun', condition: 'Sunny', temp: '22°C / 15°C' },
                 { day: 'Tuesday', icon: 'fa-cloud-showers-heavy', condition: 'Heavy Rain', temp: '17°C / 12°C' },
